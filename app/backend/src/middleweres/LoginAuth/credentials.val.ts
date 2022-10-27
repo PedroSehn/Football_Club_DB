@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import * as bcrypt from 'bcryptjs';
 import UserService from '../../services/User.service';
 
 const userService = new UserService();
@@ -23,4 +24,15 @@ const validateEmail = async (rec: Request, res: Response, next: NextFunction) =>
   next();
 };
 
-export { validateCredentials, validateEmail };
+const validatePassword = async (rec: Request, res: Response, next: NextFunction) => {
+  const { password, email } = rec.body;
+  const user = await userService.getByEmail(email);
+  const isValid = bcrypt.compareSync(password, user.password);
+  if (!isValid) {
+    return res
+      .status(401).json({ message: 'Incorrect email or password' });
+  }
+  next();
+};
+
+export { validateCredentials, validateEmail, validatePassword };

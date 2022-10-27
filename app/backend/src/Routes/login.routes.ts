@@ -2,7 +2,10 @@ import { Router } from 'express';
 import UserController from '../controllers/UserController';
 import LoginController from '../controllers/LoginController';
 
-import { validateCredentials, validateEmail } from '../middleweres/LoginAuth/credentials.val';
+import {
+  validateCredentials,
+  validateEmail,
+  validatePassword } from '../middleweres/LoginAuth/credentials.val';
 
 const LoginRouter = Router();
 
@@ -10,6 +13,6 @@ const userController = new UserController();
 const loginController = new LoginController();
 
 LoginRouter.get('/', userController.getUserByEmail);
-LoginRouter.post('/', validateCredentials, validateEmail, loginController.Login);
+LoginRouter.post('/', validateCredentials, validateEmail, validatePassword, loginController.Login);
 
 export default LoginRouter;
