@@ -1,5 +1,5 @@
-import UserModel from '../database/models/User';
-import IUser from '../database/Entities/User';
+import UserModel from '../models/User';
+import IUser from '../Entities/User';
 
 class UserService {
   private _model = UserModel;

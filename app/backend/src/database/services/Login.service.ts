@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import ICredentials from '../database/Entities/Credentials';
+import ICredentials from '../Entities/Credentials';
 
 dotenv.config();
 

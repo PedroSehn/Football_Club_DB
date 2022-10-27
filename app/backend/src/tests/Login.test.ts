@@ -5,7 +5,7 @@ import { app } from '../app';
 
 chai.use(chaiHttp);
 const { expect } = chai;
-
+/*
 describe('Testa rota /login', () => {
   it('Retorna status 200', async() => {
     const response = await chai.request(app).post('/login')
@@ -17,3 +17,4 @@ describe('Testa rota /login', () => {
     expect(response.body.token).to.exist;
   });
 });
+*/

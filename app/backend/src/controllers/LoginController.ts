@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import LoginService from '../services/Login.service';
+import LoginService from '../database/services/Login.service';
 
 const loginService = new LoginService();
 
