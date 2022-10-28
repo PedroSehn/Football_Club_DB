@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import UserController from '../controllers/UserController';
 import LoginController from '../controllers/LoginController';
 
 import {
@@ -9,10 +8,8 @@ import {
 
 const LoginRouter = Router();
 
-const userController = new UserController();
 const loginController = new LoginController();
 
-LoginRouter.get('/', userController.getUserByEmail);
 LoginRouter.post('/', validateCredentials, validateEmail, validatePassword, loginController.Login);
 LoginRouter.get('/validate', loginController.Validate);
 
