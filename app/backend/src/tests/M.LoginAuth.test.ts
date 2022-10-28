@@ -21,7 +21,7 @@ describe('Testa autenticador de credenciais', () => {
       expect(response.status).to.equal(400);
       expect(response.body).to.deep.equal({"message": "All fields must be filled"})
     })
-    it('Body sem senha', async() => {
+    it('Body sem senha retorna 400', async() => {
       const response = await chai.
       request(app)
       .post('/login')
@@ -30,7 +30,7 @@ describe('Testa autenticador de credenciais', () => {
       expect(response.status).to.equal(400);
       expect(response.body).to.deep.equal({"message": "All fields must be filled"})
     })
-    it('Email inválido', async()=>{
+    it('Email inválido retorna Incorrect email or password', async()=>{
       const response = await chai
       .request(app)
       .post('/login')
@@ -38,7 +38,7 @@ describe('Testa autenticador de credenciais', () => {
       expect(response.status).to.equal(401);
       expect(response.body).to.deep.equal({"message": "Incorrect email or password"})
     });
-    it('Senha inválido', async()=>{
+    it('Senha inválido retorna Incorrect email or password', async()=>{
       const response = await chai
       .request(app)
       .post('/login')

@@ -14,5 +14,6 @@ const loginController = new LoginController();
 
 LoginRouter.get('/', userController.getUserByEmail);
 LoginRouter.post('/', validateCredentials, validateEmail, validatePassword, loginController.Login);
+LoginRouter.get('/validate', loginController.Validate);
 
 export default LoginRouter;
