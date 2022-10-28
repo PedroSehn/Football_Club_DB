@@ -4,7 +4,7 @@ import LoginController from '../controllers/LoginController';
 import {
   validateCredentials,
   validateEmail,
-  validatePassword } from '../middleweres/LoginAuth/credentials.val';
+  validatePassword } from './middleweres/LoginAuth/credentials.val';
 
 const LoginRouter = Router();
 
