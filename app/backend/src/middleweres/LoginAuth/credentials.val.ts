@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import * as bcrypt from 'bcryptjs';
-import UserService from '../../../database/services/User.service';
+import UserService from '../../database/services/User.service';
 
 const userService = new UserService();
 
