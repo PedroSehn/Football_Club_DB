@@ -1,3 +1,4 @@
+import IMatchData from '../Entities/Match';
 import Match from '../models/Match';
 import Team from '../models/Team';
 
@@ -34,6 +35,20 @@ class MatchesService {
       ],
     });
     return result;
+  };
+
+  public createMatch = async (matchData: IMatchData) => {
+    const data = { ...matchData, inProgress: true };
+    const result = await this._model.create(data);
+    return result;
+  };
+
+  public finithMatch = async (id: string | number) => {
+    await this._model.update(
+      { inProgress: 0 },
+      { where: { id } },
+    );
+    return true;
   };
 }
 
