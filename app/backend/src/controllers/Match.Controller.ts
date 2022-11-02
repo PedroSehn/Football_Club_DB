@@ -30,6 +30,13 @@ class MatchController {
     await this._service.finithMatch(id);
     return res.status(200).json({ message: 'Finished' });
   };
+
+  public updateMatch = async (rec: Request, res: Response) => {
+    const { id } = rec.params;
+    const data = rec.body;
+    await this._service.updateMatch(id, data);
+    return res.status(200).json({ message: 'Edited' });
+  };
 }
 
 export default MatchController;

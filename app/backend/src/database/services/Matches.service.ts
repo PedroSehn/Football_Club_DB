@@ -50,6 +50,14 @@ class MatchesService {
     );
     return true;
   };
+
+  public updateMatch = async (id: string | number, data: object) => {
+    await this._model.update(
+      { ...data },
+      { where: { id } },
+    );
+    return true;
+  };
 }
 
 export default MatchesService;
