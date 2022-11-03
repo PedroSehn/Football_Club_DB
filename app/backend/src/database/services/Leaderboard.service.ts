@@ -1,11 +1,8 @@
 import MatchesService from './Matches.service';
 import TeamService from './Teams.service';
-import createLBData from '../../middleweres/Leaderboard/createLBTable';
-import sumPoints from '../../middleweres/Leaderboard/sumVictories';
-import sumLosses from '../../middleweres/Leaderboard/sumLosses';
-import sumGames from '../../middleweres/Leaderboard/sumGames';
-import sumGoals from '../../middleweres/Leaderboard/sumGoals';
-import sumEfficiency from '../../middleweres/Leaderboard/sumEfficiency';
+import createLBData from '../../middleweres/Leaderboard/General/createLBTable';
+// import fillLBTable from '../../middleweres/Leaderboard/fillLBTable';
+import homeTeamsLB from '../../middleweres/Leaderboard/homeTeams/homeTeamsLB';
 
 class LeaderBoardService {
   private _MatchService = new MatchesService();
@@ -20,12 +17,13 @@ class LeaderBoardService {
   public leaderBoardHell = async () => {
     const data = await this.getInfo();
     const array = await createLBData(data);
-    const sumPointsArr = sumPoints(data, array);
-    const sumLossesArr = sumLosses(data, sumPointsArr);
-    const sumGamesArr = sumGames(data, sumLossesArr);
-    const sumGoalsArr = sumGoals(data, sumGamesArr);
-    const sumEfficiencyArr = sumEfficiency(sumGoalsArr);
-    return sumEfficiencyArr;
+    const test = homeTeamsLB(data, array);
+    // const sumPointsArr = sumPoints(data, array);
+    // const sumLossesArr = sumLosses(data, sumPointsArr);
+    // const sumGamesArr = sumGames(data, sumLossesArr);
+    // const sumGoalsArr = sumGoals(data, sumGamesArr);
+    // const sumEfficiencyArr = sumEfficiency(sumGoalsArr);
+    return test;
   };
 }
 

@@ -1,5 +1,5 @@
-import IDataObject from '../../database/Entities/dataObject';
-import ILeaderboard from '../../database/Entities/Leaderboard';
+import IDataObject from '../../../database/Entities/dataObject';
+import ILeaderboard from '../../../database/Entities/Leaderboard';
 
 const createLBData = async (data: IDataObject) => {
   const array: ILeaderboard[] = [];
