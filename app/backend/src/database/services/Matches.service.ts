@@ -1,21 +1,22 @@
 import IMatchData from '../Entities/Match';
+import IMatchTeamshData from '../Entities/MatchesTeams';
 import Match from '../models/Match';
 import Team from '../models/Team';
 
 class MatchesService {
   private _model = Match;
 
-  public getAllMatches = async (): Promise<Match[]> => {
+  public getAllMatches = async (): Promise<IMatchTeamshData[]> => {
     const result = await this._model.findAll({
       include: [
         { model: Team, as: 'teamHome', attributes: { exclude: ['id'] } },
         { model: Team, as: 'teamAway', attributes: { exclude: ['id'] } },
       ],
     });
-    return result;
+    return result as unknown as IMatchTeamshData[];
   };
 
-  public getAllFinished = async () => {
+  public getAllFinished = async () : Promise<IMatchTeamshData[]> => {
     const result = await this._model.findAll({
       where: { inProgress: 0 },
       include: [
@@ -23,7 +24,7 @@ class MatchesService {
         { model: Team, as: 'teamAway', attributes: { exclude: ['id'] } },
       ],
     });
-    return result;
+    return result as unknown as IMatchTeamshData[];
   };
 
   public getAllInProgress = async () => {
